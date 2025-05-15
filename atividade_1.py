@@ -22,10 +22,6 @@ if not api_key:
     raise ValueError("API Key não encontrada!")
 
 def menu():
-    """
-    Exibe o menu principal com as opções de consultar notícias ou sair.
-    Retorna a opção escolhida pelo usuário se for válida.
-    """
     try:
         print("\n\nSeja bem-vindo ao consultor de notícias!")
         op_usuario = int(input("Digite: \n1 - Consultar notícias \n2 - Sair\n> "))
@@ -37,10 +33,6 @@ def menu():
         print("Digite um número inteiro válido (1 ou 2).")
 
 def requerir_qtd_noticias():
-    """
-    Solicita ao usuário a quantidade de notícias desejadas (entre 1 e 10).
-    Armazena o valor na variável global 'qtd_noticias' e o retorna.
-    """
     global qtd_noticias
     try:
         qtd_noticias = int(input("Digite quantas notícias deseja obter. (Mín 1 e Max 10)\n> "))
@@ -52,10 +44,6 @@ def requerir_qtd_noticias():
         print("Digite um número inteiro válido.")
 
 def requerir_tema_noticias():
-    """
-    Solicita ao usuário que escolha um tema com base nas opções do dicionário 'temas'.
-    Armazena o valor na variável global 'tema_noticia' e retorna a string correspondente ao tema.
-    """
     global tema_noticia
     try:
         tema_noticia = int(input("Escolha o tema que deseja:\n"
@@ -69,18 +57,11 @@ def requerir_tema_noticias():
         print("Digite um número inteiro válido.")
 
 def puxar_noticias(tema_noticia, qtd_noticias):
-    """
-    Realiza a requisição à API do NewsAPI com base no tema e quantidade de notícias solicitados.
-    Exibe o status da resposta e imprime as notícias formatadas se houver resultados.
-    
-    Parâmetros:
-    - tema_noticia (str): Tema escolhido (ex: 'business').
-    - qtd_noticias (int): Número de notícias a buscar (máx. 10).
-    """
+
     params = {
         'apiKey': api_key,
         'category': tema_noticia,
-        'pageSize': qtd_noticias
+        'pageSize': qtd_noticias,
     }
 
     resposta = requests.get(url=url, params=params)
@@ -110,4 +91,3 @@ while True:
     else:
         print("Programa encerrado.")
         break
-    
