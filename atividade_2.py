@@ -103,7 +103,7 @@ def main():
         return
     else:
         while True:
-            print("\n=== MENU ===")
+            print("\nMENU")
             print("1 - Visualizar posts")
             print("2 - Visualizar comentários de um post")
             print("3 - Visualizar meus posts")
